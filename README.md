@@ -4,7 +4,7 @@ A simple library that makes use of free available world-wide terrestris vectorti
 The main method `getOSMLayer` creates an openlayers VectorTile Layer, which you
 can use straight in your openlayers application.
 
-![example](https://rawgit.com/terrestris/vectortiles/master/terrestris-vectortiles.png "Example")
+![example](terrestris-vectortiles.png "Example")
 
 # demo
 A simple demonstration application can be found here:
@@ -13,6 +13,7 @@ https://ows.terrestris.de/anwendungen.html#osm-vectortiles
 
 # how to use
 Install the module e.g. by
+
 `npm i @terrestris/vectortiles`
 
 Then, in your code, you can create the OSM-VectorTile layer by calling
