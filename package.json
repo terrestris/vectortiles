@@ -2,16 +2,23 @@
   "name": "@terrestris/vectortiles",
   "version": "0.1.0",
   "description": "A simple library that makes use of free available world-wide terrestris vectortiles in MapBox MVT format from OpenStreetMap data",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "browser": "dist/index.js",
+  "module": "src/index.js",
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
-    "release": "np --no-yarn",
+    "release": "np --no-yarn && git push https://github.com/terrestris/vectortiles.git master --tags",
     "clean:dist": "rimraf ./dist/*",
     "prebuild:dev": "npm run lint",
     "prebuild:dist": "npm run lint",
-    "build:dist": "npm run clean:dist && webpack --mode=production",
-    "build:dev": "npm run clean:dist && webpack --mode=development",
+    "build:dist": "npm run clean:dist && BABEL_ENV=production webpack --mode=production",
+    "build:dev": "npm run clean:dist && BABEL_ENV=development webpack --mode=development",
     "lint": "eslint --ext js,jsx src/",
-    "lint:fix": "eslint --fix --ext js,jsx src/"
+    "lint:fix": "eslint --fix --ext js,jsx src/",
+    "prepublishOnly": "npm run build:dist"
   },
   "repository": {
     "type": "git",
@@ -43,6 +50,7 @@
     "babel-eslint": "10.0.1",
     "babel-loader": "8.0.4",
     "eslint": "5.7.0",
+    "np": "3.0.4",
     "webpack": "4.22.0",
     "webpack-cli": "3.1.2"
   }

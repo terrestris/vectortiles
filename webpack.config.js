@@ -36,6 +36,7 @@ module.exports = {
     }]
   },
   output: {
-    library: 'terrestrisVectorTiles'
+    library: 'terrestrisVectorTiles',
+    filename: 'index.js',
   }
 };
