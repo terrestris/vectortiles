@@ -1,4 +1,3 @@
-/* global ol */
 import { style_roads } from './styles/style-roads';
 import { style_buildings } from './styles/style-buildings';
 import { style_bluebackground } from './styles/style-bluebackground';
@@ -17,6 +16,7 @@ import OlGeomPoint from 'ol/geom/Point';
 import OlLayerVectorTile from 'ol/layer/VectorTile';
 import OlSourceVectorTile from 'ol/source/VectorTile';
 import OlFormatMVT from 'ol/format/MVT';
+import { asArray } from 'ol/color';
 
 // should labels be decluttered?
 // needs to be set before the layer gets created
@@ -282,7 +282,7 @@ const buildStyle = (feature, resolution, styleArray, geom) => {
  * @param  {Number} opacity The opacity value to set
  */
 const setOpacity = (style, opacity) => {
-  const color = ol.color.asArray(style.getColor());
+  const color = asArray(style.getColor());
   color[3] = opacity;
   style.setColor(color);
 };
