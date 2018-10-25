@@ -39,7 +39,7 @@
     "url": "https://github.com/terrestris/vectortiles/issues"
   },
   "homepage": "https://github.com/terrestris/vectortiles#readme",
-  "dependencies": {
+  "peerDependencies": {
     "ol": "5.2.0"
   },
   "devDependencies": {
