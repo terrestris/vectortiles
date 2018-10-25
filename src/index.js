@@ -7,6 +7,17 @@ import { style_waterways } from './styles/style-waterways';
 import { style_waterareas } from './styles/style-waterareas';
 import { style_countries } from './styles/style-countries';
 
+import OlStyle from 'ol/style/Style';
+import OlStyleStroke from 'ol/style/Stroke';
+import OlStyleText from 'ol/style/Text';
+import OlStyleFill from 'ol/style/Fill';
+import OlStyleIcon from 'ol/style/Icon';
+import OlControlAttribution from 'ol/control/Attribution';
+import OlGeomPoint from 'ol/geom/Point';
+import OlLayerVectorTile from 'ol/layer/VectorTile';
+import OlSourceVectorTile from 'ol/source/VectorTile';
+import OlFormatMVT from 'ol/format/MVT';
+
 // should labels be decluttered?
 // needs to be set before the layer gets created
 let useDeclutter = true;
@@ -17,20 +28,20 @@ babImg.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAbCAYAAADoOQYq
 
 
 // the OSM-attribution
-const attribution = new ol.control.Attribution({
+const attribution = new OlControlAttribution({
   html: '© terrestris GmbH & Co. KG<br>' +
   'Data © OpenStreetMap <a href="http://www.openstreetmap.org/copyright/en" ' +
   'target="_blank">contributors</a>'
 });
 
 // the style template used for labels
-let labelStyle = new ol.style.Style({
-  text: new ol.style.Text({
+let labelStyle = new OlStyle({
+  text: new OlStyleText({
     font: '13px sans-serif',
-    fill: new ol.style.Fill({
+    fill: new OlStyleFill({
       color: '#000'
     }),
-    stroke: new ol.style.Stroke({
+    stroke: new OlStyleStroke({
       color: '#fff',
       width: 3
     }),
@@ -41,8 +52,8 @@ let labelStyle = new ol.style.Style({
 });
 
 // the style template used for linestrings
-let lineStringStyleBelow = new ol.style.Style({
-  stroke: new ol.style.Stroke({
+let lineStringStyleBelow = new OlStyle({
+  stroke: new OlStyleStroke({
     color: 'black',
     width: 2,
     lineCap: 'butt',
@@ -52,8 +63,8 @@ let lineStringStyleBelow = new ol.style.Style({
 });
 
 // the style template used for linestrings
-let lineStringStyleAbove = new ol.style.Style({
-  stroke: new ol.style.Stroke({
+let lineStringStyleAbove = new OlStyle({
+  stroke: new OlStyleStroke({
     color: 'white',
     width: 1,
     lineCap: 'round',
@@ -63,35 +74,35 @@ let lineStringStyleAbove = new ol.style.Style({
 });
 
 // the style template used for polygons
-const polygonStyleFill = new ol.style.Fill({
+const polygonStyleFill = new OlStyleFill({
   color: 'blue'
 });
-const polygonStyleStroke = new ol.style.Stroke({
+const polygonStyleStroke = new OlStyleStroke({
   color: 'blue',
   width: 1,
   lineCap: 'round'
 });
-let polygonStyle = new ol.style.Style({
+let polygonStyle = new OlStyle({
   fill: polygonStyleFill,
   stroke: polygonStyleStroke,
   zIndex: 0
 });
 
 // the style template used for highway icons
-let iconStyle = new ol.style.Style({
-  image: new ol.style.Icon({
+let iconStyle = new OlStyle({
+  image: new OlStyleIcon({
     scale: 0.9,
     imgSize: [45,27],
     img: babImg,
     opacity: 0.8
   }),
-  text: new ol.style.Text({
+  text: new OlStyleText({
     padding: [50, 50, 50, 50],
     font: '12px sans-serif',
-    fill: new ol.style.Fill({
+    fill: new OlStyleFill({
       color: '#fff'
     }),
-    stroke: new ol.style.Stroke({
+    stroke: new OlStyleStroke({
       color: '#fff',
       width: 0.8
     })
@@ -240,7 +251,7 @@ const buildStyle = (feature, resolution, styleArray, geom) => {
       // try to extract coordinates from an ol.render.feature
       const coords = feature.getGeometry().getFlatCoordinates();
       if (coords && coords.length > 1) {
-        const point = new ol.geom.Point([coords[0], coords[1]]);
+        const point = new OlGeomPoint([coords[0], coords[1]]);
         iconStyle.setGeometry(point);
         iconStyle.getText().setText(props.ref || props.name);
         style.push(iconStyle);
@@ -267,7 +278,7 @@ const buildStyle = (feature, resolution, styleArray, geom) => {
 
 /**
  * Sets the opacity on a style
- * @param  {ol.style.Fill or ol.style.Stroke} style The style to set the opacity on
+ * @param  {OlStyleFill or OlStyleStroke} style The style to set the opacity on
  * @param  {Number} opacity The opacity value to set
  */
 const setOpacity = (style, opacity) => {
@@ -282,11 +293,11 @@ const setOpacity = (style, opacity) => {
  * @return {ol.layer.VectorTile} The terrestris OSM VectorTile layer
  */
 export const getOSMLayer = () => {
-  const osmLayer = new ol.layer.VectorTile({
+  const osmLayer = new OlLayerVectorTile({
     name: 'terrestris-vectortiles',
     declutter: useDeclutter,
-    source: new ol.source.VectorTile({
-      format: new ol.format.MVT(),
+    source: new OlSourceVectorTile({
+      format: new OlFormatMVT(),
       url: 'https://ows.terrestris.de/osm-vectortiles/' + 'osm:osm_world_vector' +
         '@mapbox-vector-tiles@pbf/{z}/{x}/{-y}.pbf',
       attributions: [attribution]
