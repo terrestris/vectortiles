@@ -16,14 +16,13 @@ Install the module e.g. by
 
 `npm i @terrestris/vectortiles`
 
-Then, in your code, you can create the OSM-VectorTile layer by calling
+Then, in your code, import the main method:
 ```
-terrestrisVectorTiles.getOSMLayer();
+import getOSMLayer from '@terrestris/vectortiles';
+```
+
+Then you can create the OSM-VectorTile layer by calling
+```
+getOSMLayer();
 ```
 which returns the layer you can then add to your openlayers map.
-
-Optionally, you can set
-```
-terrestrisVectorTiles.useDeclutter = false;
-```
-before calling `getOSMLayer` in order to disable decluttering of labels. This will improve performance, but will also make labels overlap.

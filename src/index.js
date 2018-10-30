@@ -20,7 +20,7 @@ import { asArray } from 'ol/color';
 
 // should labels be decluttered?
 // needs to be set before the layer gets created
-let useDeclutter = true;
+const useDeclutter = true;
 
 // resources like imagery for highway label signs
 let babImg = document.createElement('img');
@@ -292,7 +292,7 @@ const setOpacity = (style, opacity) => {
  *
  * @return {ol.layer.VectorTile} The terrestris OSM VectorTile layer
  */
-export function getOSMLayer() {
+export default function getOSMLayer() {
   const osmLayer = new OlLayerVectorTile({
     name: 'terrestris-vectortiles',
     declutter: useDeclutter,
