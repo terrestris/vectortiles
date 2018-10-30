@@ -1,6 +1,6 @@
 {
   "name": "@terrestris/vectortiles",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A simple library that makes use of free available world-wide terrestris vectortiles in MapBox MVT format from OpenStreetMap data",
   "module": "src/index.js",
   "main": "dist/index.js",
