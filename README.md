@@ -9,7 +9,7 @@ can use straight in your openlayers application.
 # demo
 A simple demonstration application can be found here:
 
-https://ows.terrestris.de/anwendungen.html#osm-vectortiles
+https://demo.terrestris.de/democlient/index.html
 
 # how to use
 Install the module e.g. by
