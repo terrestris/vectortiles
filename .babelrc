@@ -1,13 +1,11 @@
 {
   "presets": [
-    "env",
-    "stage-0"
+    "@babel/env"
   ],
   "env": {
     "production": {
       "presets": [
-        "env",
-        "stage-0"
+        "@babel/env"
       ]
     }
   }
