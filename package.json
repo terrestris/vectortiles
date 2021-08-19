@@ -39,15 +39,14 @@
   },
   "homepage": "https://github.com/terrestris/vectortiles#readme",
   "dependencies": {
-    "ol": "5.2.0"
+    "ol": "6.6.1"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.3",
-    "babel-eslint": "10.0.3",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-stage-0": "6.24.1",
-    "eslint": "6.3.0",
-    "np": "5.0.3"
+    "@babel/cli": "7.14.8",
+    "@babel/core": "7.15.0",
+    "@babel/preset-env": "7.15.0",
+    "@babel/eslint-parser": "7.15.0",
+    "eslint": "7.32.0",
+    "np": "7.5.0"
   }
 }
