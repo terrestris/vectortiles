@@ -16,13 +16,22 @@ Install the module e.g. by
 
 `npm i @terrestris/vectortiles`
 
-Then, in your code, import the main method:
+Then, in your code, import as follows:
 ```
-import getOSMLayer from '@terrestris/vectortiles';
+import terrestrisVectorTiles from '@terrestris/vectortiles';
 ```
 
 Then you can create the OSM-VectorTile layer by calling
 ```
-getOSMLayer();
+const layer = new terrestrisVectorTiles();
 ```
-which returns the layer you can then add to your openlayers map.
+or with custom configuration and style:
+```
+const layer = new terrestrisVectorTiles({
+    declutter: false,
+    usePlacesLabels: false,
+    style_roads: [{
+        ...
+    }]
+});
+```
