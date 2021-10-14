@@ -1,0 +1,14 @@
+{
+  "name": "offscreen-canvas",
+  "dependencies": {
+    "ol": "6.9.0",
+    "json-stringify-safe": "^5.0.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . index.html"
+  }
+}

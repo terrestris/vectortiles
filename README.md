@@ -23,11 +23,13 @@ import terrestrisVectorTiles from '@terrestris/vectortiles';
 
 Then you can create the OSM-VectorTile layer by calling
 ```
-const layer = new terrestrisVectorTiles();
+const layer = new terrestrisVectorTiles({map});
 ```
 or with custom configuration and style:
 ```
 const layer = new terrestrisVectorTiles({
+    map: map,
+    useOffscreenCanvas: true,
     declutter: false,
     usePlacesLabels: false,
     style_roads: [{
