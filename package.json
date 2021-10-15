@@ -1,6 +1,6 @@
 {
   "name": "@terrestris/vectortiles",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A simple library that makes use of free available world-wide terrestris vectortiles in MapBox MVT format from OpenStreetMap data",
   "module": "src/index.js",
   "main": "dist/index.js",
@@ -39,14 +39,15 @@
   },
   "homepage": "https://github.com/terrestris/vectortiles#readme",
   "dependencies": {
-    "ol": "6.6.1"
+    "ol": "6.9.0",
+    "json-stringify-safe": "5.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.14.8",
-    "@babel/core": "7.15.0",
-    "@babel/preset-env": "7.15.0",
-    "@babel/eslint-parser": "7.15.0",
-    "eslint": "7.32.0",
+    "@babel/cli": "7.15.7",
+    "@babel/core": "7.15.8",
+    "@babel/preset-env": "7.15.8",
+    "@babel/eslint-parser": "7.15.8",
+    "eslint": "8.0.1",
     "np": "7.5.0"
   }
 }
